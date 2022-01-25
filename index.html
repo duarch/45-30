@@ -1,27 +1,178 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Esboços 45 para 30</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
-<h1> Titulo</h1>
+        <h1>Converter 45 para 30</h1>
     </header>
     <section>
-<div>
-testando
-</div>
-<div>
 
-</div>
+
+        <table>
+            <tr>
+                <td>
+                    <input class="time" type="number" name="num1" id="num1">
+                </td>
+                <td>
+
+                    <p id="resultnum1">
+
+                    </p>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="time" type="number" name="num2" id="num2">
+                </td>
+                <td>
+                    <p id="resultnum2"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="time" type="number" name="num3" id="num3">
+                </td>
+                <td>
+                    <p id="resultnum3"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="time" type="number" name="num4" id="num4">
+                </td>
+                <td>
+                    <p id="resultnum4"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="time" type="number" name="num5" id="num5">
+                </td>
+                <td>
+                    <p id="resultnum5"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="time" type="number" name="num6" id="num6">
+                </td>
+                <td>
+                    <p id="resultnum6"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="time" type="number" name="num7" id="num7">
+                </td>
+                <td>
+                    <p id="resultnum7"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="time" type="number" name="num8" id="num8">
+                </td>
+                <td>
+                    <p id="resultnum8"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="time" type="number" name="num9" id="num9">
+                </td>
+                <td>
+                    <p id="resultnum9"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="time" type="number" name="num10" id="num10">
+                </td>
+                <td>
+                    <p id="resultnum10"></p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p id="sum1"></p>
+                </td>
+                <td>
+                    <p id="sum2"></p>
+                </td>
+            </tr>
+
+
+
+
     </section>
     <footer>
 
     </footer>
+    <script>
+        function convert45(num) {
+
+            if (num > 45) {
+                return "O numero não pode ser maior que 45 minutos";
+            } else {
+                var tempo = num / 1.5
+                var minutos = Math.floor(tempo);
+                var segundos = Math.round((tempo - minutos) * 60);
+                if (segundos < 10) {
+                    segundos = "0" + segundos;
+                }
+                return minutos + ":" + segundos;
+            }
+
+        }
+
+
+
+        var inputs = document.querySelectorAll(".time");
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].addEventListener("keyup", function() {
+                var num = this.value;
+                if (num > 45) {
+                    alert("Limite de 45 minutos");
+                    num = 45;
+                }
+                var result = document.getElementById("result" + this.id);
+                result.innerHTML = convert45(num);
+            });
+
+        }
+
+        var sum = 0;
+        var sum2 = 0;
+        var inserts = document.querySelectorAll(".time");
+        for (var i = 0; i < inserts.length; i++) {
+            inserts[i].addEventListener("keyup", function() {
+                sum += parseInt(this.value);
+                if (sum > 45) {
+                    alert("Limite de 45 minutos atingido");
+                    sum = 45;
+                }
+                sum2 = convert45(sum);
+                var sumres = document.getElementById("sum1");
+                var sum2res = document.getElementById("sum2");
+                sumres.innerHTML = sum;
+                sum2res.innerHTML = sum2;
+            });
+        }
+    </script>
+
+
+
     <script src="main.js"></script>
 </body>
+
 </html>
